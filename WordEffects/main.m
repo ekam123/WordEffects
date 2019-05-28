@@ -73,6 +73,9 @@ int main(int argc, const char * argv[]) {
                 case 8:
                     NSLog(@"%@", [newString stringByReplacingOccurrencesOfString:@"a" withString:@"😎"]);
                     break;
+                case 9:
+                    NSLog(@"ererwr");
+                    NSLog(@"hi");
                 default:
                     break;
             }
