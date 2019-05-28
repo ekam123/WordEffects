@@ -26,12 +26,11 @@ int main(int argc, const char * argv[]) {
             NSString *inputString = [NSString stringWithUTF8String:inputChars];
     
             
-            
             // get the number and convert it into a string
             NSString *numString = [inputString substringWithRange:NSMakeRange(0, 1)];
 //            NSLog(@"%@", numString);
             NSString *newString = [inputString substringWithRange: NSMakeRange(2, [inputString length] - 3)];
-            NSLog(@"%@", newString);
+//            NSLog(@"%@", newString);
             int num = [numString intValue];
             
          
@@ -67,6 +66,12 @@ int main(int argc, const char * argv[]) {
                     break;
                 case 6:
                     NSLog(@"Input was: %@", [newString stringByReplacingOccurrencesOfString:@" " withString:@"-"]);
+                    break;
+                case 7:
+                    NSLog(@"The length of this string is %lu: ", (unsigned long)[newString length]);
+                    break;
+                case 8:
+                    NSLog(@"%@", [newString stringByReplacingOccurrencesOfString:@"a" withString:@"😎"]);
                     break;
                 default:
                     break;
