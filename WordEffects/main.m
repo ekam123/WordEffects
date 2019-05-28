@@ -30,8 +30,8 @@ int main(int argc, const char * argv[]) {
             // get the number and convert it into a string
             NSString *numString = [inputString substringWithRange:NSMakeRange(0, 1)];
 //            NSLog(@"%@", numString);
-            NSString *newString = [inputString substringWithRange: NSMakeRange(2, [inputString length] -2)];
-//            NSLog(@"%@", newString);
+            NSString *newString = [inputString substringWithRange: NSMakeRange(2, [inputString length] - 3)];
+            NSLog(@"%@", newString);
             int num = [numString intValue];
             
          
@@ -55,11 +55,13 @@ int main(int argc, const char * argv[]) {
                     NSLog(@"Input was: %@", [newString stringByAppendingString:@", eh?"]);
                     break;
                 case 5:
-                    if ([newString containsString:@"!"]) {
+                    if ([newString hasSuffix:@"!"]) {
                         NSLog(@"Whoa, calm down!");
-                    } else if ([newString containsString:@"?"]) {
+                    }
+                    else if ([newString containsString:@"?"]) {
                         NSLog(@"I don't know");
-                    } else {
+                    }
+                    else {
                         NSLog(@"You need to enter a question mark or an exclamation point");
                     }
                     break;
