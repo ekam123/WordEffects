@@ -23,41 +23,42 @@ int main(int argc, const char * argv[]) {
             printf("Your string is %s\n", inputChars);
             
             // convert char array to an NSString object
-            NSString *inputString = [NSString stringWithUTF8String:inputChars];
+            NSMutableString *inputString = [NSMutableString stringWithUTF8String:inputChars];
     
             
             // get the number and convert it into a string
-            NSString *numString = [inputString substringWithRange:NSMakeRange(0, 1)];
+            NSMutableString *numString = [[inputString substringWithRange:NSMakeRange(0, 1)] mutableCopy];
 //            NSLog(@"%@", numString);
-            NSString *newString = [inputString substringWithRange: NSMakeRange(2, [inputString length] - 3)];
+            [inputString deleteCharactersInRange:NSMakeRange(0,2)] ; //for some reason this adds a newline character
+            [inputString deleteCharactersInRange:NSMakeRange([inputString length] - 1, 1)];
 //            NSLog(@"%@", newString);
             int num = [numString intValue];
             
-         
+      
             
         // Print out the correct operation
             switch (num) {
                 case 1:
-                    NSLog(@"Input was: %@", [newString uppercaseString]);
+                    NSLog(@"Input was: %@", [inputString uppercaseString]);
                     break;
                 case 2:
-                    NSLog(@"Input was: %@", [newString lowercaseString]);
+                    NSLog(@"Input was: %@", [inputString lowercaseString]);
                     break;
                 case 3:
-                    if ([newString intValue] == 0 ) {
+                    if ([inputString intValue] == 0 ) {
                         NSLog(@"You need to put in a number with this value");
                     } else {
-                        NSLog(@"Input was: %d", [newString intValue]);
+                        NSLog(@"Input was: %d", [inputString intValue]);
                     }
                     break;
                 case 4:
-                    NSLog(@"Input was: %@", [newString stringByAppendingString:@", eh?"]);
+                    NSLog(@"Input was: %@", [inputString stringByAppendingString:@", eh?"]);
                     break;
                 case 5:
-                    if ([newString hasSuffix:@"!"]) {
+                    if ([inputString hasSuffix:@"!"]) {
                         NSLog(@"Whoa, calm down!");
                     }
-                    else if ([newString containsString:@"?"]) {
+                    else if ([inputString containsString:@"?"]) {
                         NSLog(@"I don't know");
                     }
                     else {
@@ -65,13 +66,13 @@ int main(int argc, const char * argv[]) {
                     }
                     break;
                 case 6:
-                    NSLog(@"Input was: %@", [newString stringByReplacingOccurrencesOfString:@" " withString:@"-"]);
+                    NSLog(@"Input was: %@", [inputString stringByReplacingOccurrencesOfString:@" " withString:@"-"]);
                     break;
                 case 7:
-                    NSLog(@"The length of this string is %lu: ", (unsigned long)[newString length]);
+                    NSLog(@"The length of this string is %lu: ", (unsigned long)[inputString length]);
                     break;
                 case 8:
-                    NSLog(@"%@", [newString stringByReplacingOccurrencesOfString:@"a" withString:@"😎"]);
+                    NSLog(@"%@", [inputString stringByReplacingOccurrencesOfString:@"a" withString:@"😎"]);
                     break;
                 case 9:
                     NSLog(@"ererwr");
